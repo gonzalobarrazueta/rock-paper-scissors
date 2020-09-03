@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function computerPlay(){
+      //eleccion va a ir de 1 a 10
+      let eleccion = Math.ceil(Math.random()*10);
+      
+      //PIEDRA
+      if(eleccion >= 1 && eleccion <4){
+        return 'piedra'
+      }
+      //PAPEL
+      else if(eleccion >=4 && eleccion < 7){
+        return 'papel';
+      }
+      //TIJERA
+      else {
+        return 'tijera';
+      }
+    }
+
+    function playerSelection(){
+      let eleccion = prompt("¿Piedra, papel o tijera?");
+      return eleccion;
+    }  
+  
+  </script>
+  
+</body>
+</html>
