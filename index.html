@@ -9,28 +9,52 @@
 
   <script>
     function computerPlay(){
-      //eleccion va a ir de 1 a 10
-      let eleccion = Math.ceil(Math.random()*10);
+      //selection goes from 1 to 10
+      let selection = Math.ceil(Math.random()*10);
       
       //PIEDRA
       if(eleccion >= 1 && eleccion <4){
-        return 'piedra'
+        return "piedra";
       }
       //PAPEL
       else if(eleccion >=4 && eleccion < 7){
-        return 'papel';
+        return "papel";
       }
       //TIJERA
       else {
-        return 'tijera';
+        return "tijera";
       }
     }
 
     function playerSelection(){
-      let eleccion = prompt("¿Piedra, papel o tijera?");
-      return eleccion;
+      let selection = prompt("¿Piedra, papel o tijera?");
+      return selection;
     }  
-  
+    
+    function playRound(playerSelection, computerSelection){
+
+      playerSelection= playerSelection.toLowerCase();
+      computerSelection = computerSelection.toLowerCase();
+
+      if(playerSelection !== computerSelection){
+
+        if(playerSelection === "piedra" && computerSelection === "tijera"){
+          return `¡Ganaste! ${playerSelection} vence ${computerSelection}.`;
+        }
+        else if(playerSelection === "tijera" && computerSelection === "papel"){
+          return `¡Ganaste! ${playerSelection} vence ${computerSelection}.`;
+        }
+        else if(playerSelection === "papel" && computerSelection === "piedra"){
+          return `¡Ganaste! ${playerSelection} vence ${computerSelection}.`;
+        }else{
+          return `Perdiste! ${computerSelection} vence ${playerSelection}`;
+        }
+      }
+      else {
+        return "Es un empate";
+      }    
+    }
+
   </script>
   
 </body>
