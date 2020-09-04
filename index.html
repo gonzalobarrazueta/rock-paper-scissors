@@ -8,28 +8,29 @@
 <body>
 
   <script>
-    function computerPlay(){
+    
+    let computerPlay = function(){
       //selection goes from 1 to 10
       let selection = Math.ceil(Math.random()*10);
       
       //PIEDRA
-      if(eleccion >= 1 && eleccion <4){
+      if(selection >= 1 && selection <4){
         return "piedra";
       }
       //PAPEL
-      else if(eleccion >=4 && eleccion < 7){
+      else if(selection >=4 && selection < 7){
         return "papel";
       }
       //TIJERA
       else {
         return "tijera";
       }
-    }
+    };
 
-    function playerSelection(){
+    let playerSelection = function(){
       let selection = prompt("¿Piedra, papel o tijera?");
       return selection;
-    }  
+    };
     
     function playRound(playerSelection, computerSelection){
 
@@ -39,22 +40,57 @@
       if(playerSelection !== computerSelection){
 
         if(playerSelection === "piedra" && computerSelection === "tijera"){
-          return `¡Ganaste! ${playerSelection} vence ${computerSelection}.`;
+          console.log(`¡Ganaste! ${playerSelection} vence ${computerSelection}.`);
+          return true;
         }
         else if(playerSelection === "tijera" && computerSelection === "papel"){
-          return `¡Ganaste! ${playerSelection} vence ${computerSelection}.`;
+          console.log(`¡Ganaste! ${playerSelection} vence ${computerSelection}.`);
+          return true;
         }
         else if(playerSelection === "papel" && computerSelection === "piedra"){
-          return `¡Ganaste! ${playerSelection} vence ${computerSelection}.`;
+          console.log(`¡Ganaste! ${playerSelection} vence ${computerSelection}.`);
+          return true;
         }else{
-          return `Perdiste! ${computerSelection} vence ${playerSelection}`;
+          console.log(`¡Perdiste! ${computerSelection} vence ${playerSelection}`);
+          return false;
         }
       }
       else {
-        return "Es un empate";
+        console.log(`¡Empate! ${ playerSelection} y ${computerSelection} son iguales.`);
+        return "Empate";
       }    
     }
+    
+    let winner = function(userScore, computerScore){
+      if (userScore > computerScore) {
+        return "You're a winner!!!";
+      } else if (userScore < computerScore) {
+        return "You're a loser!";
+      } else {
+        return "It's a tie!";
+      }
+    }
 
+    function game(){
+
+      let userScore = 0, computerScore = 0;
+
+      for (let i = 0; i < 5 ; i++){
+
+        let roundResult = playRound(playerSelection(),computerPlay());
+        
+        if (roundResult === true){
+          userScore++;
+        } else if (roundResult === false) {
+          computerScore++;
+        } else {
+          continue;
+        }
+      }
+
+      return winner(userScore, computerScore);
+    }
+  
   </script>
   
 </body>
